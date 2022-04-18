@@ -78,6 +78,8 @@ namespace MyStoreWinApp
         {
             if (authenticatedUser != null)
             {
+                tbEmail.ResetText();
+                tbPassword.ResetText();
                 if (authenticatedUser is Admin)
                 {
 
@@ -92,9 +94,6 @@ namespace MyStoreWinApp
                     frmUpdate.Show();
                     this.Hide();
                 }
-
-                tbEmail.Text = "";
-                tbPassword.Text = "";
             }
             else
             {

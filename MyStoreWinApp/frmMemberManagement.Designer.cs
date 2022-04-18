@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.memberDataGrid = new System.Windows.Forms.DataGridView();
             this.chkSort = new System.Windows.Forms.CheckBox();
             this.update = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
@@ -40,17 +40,22 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.cbCity = new System.Windows.Forms.ComboBox();
             this.cbCountry = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // memberDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 188);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(621, 223);
-            this.dataGridView1.TabIndex = 0;
+            this.memberDataGrid.AllowUserToAddRows = false;
+            this.memberDataGrid.AllowUserToDeleteRows = false;
+            this.memberDataGrid.AllowUserToOrderColumns = true;
+            this.memberDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.memberDataGrid.Location = new System.Drawing.Point(33, 188);
+            this.memberDataGrid.MultiSelect = false;
+            this.memberDataGrid.Name = "memberDataGrid";
+            this.memberDataGrid.ReadOnly = true;
+            this.memberDataGrid.RowTemplate.Height = 25;
+            this.memberDataGrid.Size = new System.Drawing.Size(621, 223);
+            this.memberDataGrid.TabIndex = 0;
             // 
             // chkSort
             // 
@@ -97,6 +102,7 @@
             this.search.TabIndex = 5;
             this.search.Text = "search";
             this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // filter
             // 
@@ -106,6 +112,7 @@
             this.filter.TabIndex = 6;
             this.filter.Text = "filter";
             this.filter.UseVisualStyleBackColor = true;
+            this.filter.Click += new System.EventHandler(this.filter_Click);
             // 
             // logout
             // 
@@ -175,10 +182,11 @@
             this.Controls.Add(this.delete);
             this.Controls.Add(this.update);
             this.Controls.Add(this.chkSort);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.memberDataGrid);
             this.Name = "frmMemberManagement";
             this.Text = "frmMemberManagement";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmMemberManagement_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.memberDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,7 +194,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView memberDataGrid;
         private System.Windows.Forms.CheckBox chkSort;
         private System.Windows.Forms.Button update;
         private System.Windows.Forms.Button delete;

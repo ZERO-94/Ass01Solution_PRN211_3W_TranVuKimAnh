@@ -113,7 +113,7 @@ namespace DataAccess.dao
 
         public List<MemberObject> GetMemberByCountry(string country) => memberList.Where(member => member.Country.Equals(country)).ToList();
 
-        public List<MemberObject> GetMemberByCityAndCountry(string city, string country) => memberList.Where(member => member.City.Equals(city) && member.Country.Equals(country)).ToList();
+        public List<MemberObject> GetMemberByCityAndCountry(string city, string country) => memberList.Where(member => member.City.Contains(city) && member.Country.Contains(country)).ToList();
 
         public MemberObject CheckLogin(string email, string password) {
             return memberList.SingleOrDefault(member => member.Email.Equals(email) && member.Password.Equals(password));
