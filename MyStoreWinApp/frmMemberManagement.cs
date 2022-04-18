@@ -71,8 +71,8 @@ namespace MyStoreWinApp
 
         private void search_Click(object sender, EventArgs e)
         {
-            string searchId = tbId.Text;
-            string searchName = tbName.Text;
+            string searchId = this.searchId.Text;
+            string searchName = this.searchName.Text;
 
             if (!string.IsNullOrWhiteSpace(searchId) || !string.IsNullOrWhiteSpace(searchName))
             {
@@ -91,8 +91,8 @@ namespace MyStoreWinApp
 
         private void filter_Click(object sender, EventArgs e)
         {
-            string searchCity = cbCity.Text;
-            string searchCountry = cbCountry.Text;
+            string searchCity = this.searchCity.Text;
+            string searchCountry = this.searchCountry.Text;
 
             if (!string.IsNullOrWhiteSpace(searchCity) || !string.IsNullOrWhiteSpace(searchCountry))
             {
@@ -105,6 +105,64 @@ namespace MyStoreWinApp
                 loadTableData(delegate (List<MemberObject> list)
                 {
                     return list; //get all
+                });
+            }
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string deleteId = (string)memberDataGrid.Rows[memberDataGrid.CurrentCell.RowIndex].Cells[0].Value;
+
+                if (deleteId != null)
+                {
+                    if (deleteId.Equals(admin.MemberID))
+                    {
+                        MessageBox.Show("You can't delete yourself!");
+                    }
+                    else
+                    {
+                        bool deleteRes = memberRepository.DeleteMember(admin, deleteId);
+                        if (deleteRes)
+                        {
+                            MessageBox.Show("Delete successfully");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete");
+                        }
+                    }
+                }
+            } finally
+            {
+                loadTableData(delegate (List<MemberObject> list)
+                {
+                    return list;
+                });
+            }
+        }
+
+        private void createMember_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMemberForAdmin frmMemberForAdmin = new frmMemberForAdmin("create", null);
+
+                if (frmMemberForAdmin.ShowDialog() == DialogResult.OK)
+                {
+                    //create member
+                    MemberObject memberObject = frmMemberForAdmin.GetMemberObject();
+
+                    bool createRes = memberRepository.CreateMember(admin, memberObject);
+                    if (createRes) MessageBox.Show("Create successfully");
+                    else MessageBox.Show("Failed to create");
+                }
+            } finally
+            {
+                loadTableData(delegate (List<MemberObject> list)
+                {
+                    return list;
                 });
             }
         }

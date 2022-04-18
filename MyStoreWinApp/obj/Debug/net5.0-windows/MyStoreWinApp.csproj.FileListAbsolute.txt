@@ -25,3 +25,4 @@ D:\C#\Ass01Solution_PRN211_3W_TranVuKimAnh\MyStoreWinApp\obj\Debug\net5.0-window
 D:\C#\Ass01Solution_PRN211_3W_TranVuKimAnh\MyStoreWinApp\obj\Debug\net5.0-windows\MyStoreWinApp.pdb
 D:\C#\Ass01Solution_PRN211_3W_TranVuKimAnh\MyStoreWinApp\obj\Debug\net5.0-windows\MyStoreWinApp.genruntimeconfig.cache
 D:\C#\Ass01Solution_PRN211_3W_TranVuKimAnh\MyStoreWinApp\obj\Debug\net5.0-windows\MyStoreWinApp.frmUpdate.resources
+D:\C#\Ass01Solution_PRN211_3W_TranVuKimAnh\MyStoreWinApp\obj\Debug\net5.0-windows\MyStoreWinApp.frmMemberForAdmin.resources

@@ -36,10 +36,10 @@
             this.search = new System.Windows.Forms.Button();
             this.filter = new System.Windows.Forms.Button();
             this.logout = new System.Windows.Forms.Button();
-            this.tbId = new System.Windows.Forms.TextBox();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.cbCity = new System.Windows.Forms.ComboBox();
-            this.cbCountry = new System.Windows.Forms.ComboBox();
+            this.searchId = new System.Windows.Forms.TextBox();
+            this.searchName = new System.Windows.Forms.TextBox();
+            this.searchCity = new System.Windows.Forms.ComboBox();
+            this.searchCountry = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.memberDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +84,7 @@
             this.delete.TabIndex = 3;
             this.delete.Text = "delete";
             this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // createMember
             // 
@@ -93,6 +94,7 @@
             this.createMember.TabIndex = 4;
             this.createMember.Text = "create member";
             this.createMember.UseVisualStyleBackColor = true;
+            this.createMember.Click += new System.EventHandler(this.createMember_Click);
             // 
             // search
             // 
@@ -124,57 +126,57 @@
             this.logout.UseVisualStyleBackColor = true;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
-            // tbId
+            // searchId
             // 
-            this.tbId.Location = new System.Drawing.Point(33, 89);
-            this.tbId.Name = "tbId";
-            this.tbId.Size = new System.Drawing.Size(239, 23);
-            this.tbId.TabIndex = 8;
+            this.searchId.Location = new System.Drawing.Point(33, 89);
+            this.searchId.Name = "searchId";
+            this.searchId.Size = new System.Drawing.Size(239, 23);
+            this.searchId.TabIndex = 8;
             // 
-            // tbName
+            // searchName
             // 
-            this.tbName.Location = new System.Drawing.Point(318, 88);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(239, 23);
-            this.tbName.TabIndex = 9;
+            this.searchName.Location = new System.Drawing.Point(318, 88);
+            this.searchName.Name = "searchName";
+            this.searchName.Size = new System.Drawing.Size(239, 23);
+            this.searchName.TabIndex = 9;
             // 
-            // cbCity
+            // searchCity
             // 
-            this.cbCity.FormattingEnabled = true;
-            this.cbCity.Items.AddRange(new object[] {
+            this.searchCity.FormattingEnabled = true;
+            this.searchCity.Items.AddRange(new object[] {
             "",
             "HN",
             "HCM",
             "NY",
             "CT"});
-            this.cbCity.Location = new System.Drawing.Point(33, 134);
-            this.cbCity.Name = "cbCity";
-            this.cbCity.Size = new System.Drawing.Size(239, 23);
-            this.cbCity.TabIndex = 10;
+            this.searchCity.Location = new System.Drawing.Point(33, 134);
+            this.searchCity.Name = "searchCity";
+            this.searchCity.Size = new System.Drawing.Size(239, 23);
+            this.searchCity.TabIndex = 10;
             // 
-            // cbCountry
+            // searchCountry
             // 
-            this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Items.AddRange(new object[] {
+            this.searchCountry.FormattingEnabled = true;
+            this.searchCountry.Items.AddRange(new object[] {
             "",
             "VN",
             "USE",
             "CN",
             "JP"});
-            this.cbCountry.Location = new System.Drawing.Point(318, 134);
-            this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(239, 23);
-            this.cbCountry.TabIndex = 11;
+            this.searchCountry.Location = new System.Drawing.Point(318, 134);
+            this.searchCountry.Name = "searchCountry";
+            this.searchCountry.Size = new System.Drawing.Size(239, 23);
+            this.searchCountry.TabIndex = 11;
             // 
             // frmMemberManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cbCountry);
-            this.Controls.Add(this.cbCity);
-            this.Controls.Add(this.tbName);
-            this.Controls.Add(this.tbId);
+            this.Controls.Add(this.searchCountry);
+            this.Controls.Add(this.searchCity);
+            this.Controls.Add(this.searchName);
+            this.Controls.Add(this.searchId);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.search);
@@ -202,9 +204,9 @@
         private System.Windows.Forms.Button search;
         private System.Windows.Forms.Button filter;
         private System.Windows.Forms.Button logout;
-        private System.Windows.Forms.TextBox tbId;
-        private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.ComboBox cbCity;
-        private System.Windows.Forms.ComboBox cbCountry;
+        private System.Windows.Forms.TextBox searchId;
+        private System.Windows.Forms.TextBox searchName;
+        private System.Windows.Forms.ComboBox searchCity;
+        private System.Windows.Forms.ComboBox searchCountry;
     }
 }
