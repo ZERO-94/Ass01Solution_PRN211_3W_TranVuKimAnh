@@ -181,15 +181,19 @@
             // 
             this.tbReConfirm.Location = new System.Drawing.Point(449, 167);
             this.tbReConfirm.Name = "tbReConfirm";
+            this.tbReConfirm.PasswordChar = '*';
             this.tbReConfirm.Size = new System.Drawing.Size(287, 23);
             this.tbReConfirm.TabIndex = 11;
+            this.tbReConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.tbReConfirm_Validating);
             // 
             // tbOldPassword
             // 
             this.tbOldPassword.Location = new System.Drawing.Point(449, 102);
             this.tbOldPassword.Name = "tbOldPassword";
+            this.tbOldPassword.PasswordChar = '*';
             this.tbOldPassword.Size = new System.Drawing.Size(287, 23);
             this.tbOldPassword.TabIndex = 10;
+            this.tbOldPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbOldPassword_Validating);
             // 
             // newPassword
             // 
@@ -204,8 +208,10 @@
             // 
             this.tbNewPassword.Location = new System.Drawing.Point(449, 231);
             this.tbNewPassword.Name = "tbNewPassword";
+            this.tbNewPassword.PasswordChar = '*';
             this.tbNewPassword.Size = new System.Drawing.Size(287, 23);
             this.tbNewPassword.TabIndex = 14;
+            this.tbNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbNewPassword_Validating);
             // 
             // update
             // 
@@ -225,6 +231,7 @@
             this.changePassword.TabIndex = 17;
             this.changePassword.Text = "change password";
             this.changePassword.UseVisualStyleBackColor = true;
+            this.changePassword.Click += new System.EventHandler(this.changePassword_Click);
             // 
             // label1
             // 

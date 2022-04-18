@@ -66,6 +66,7 @@
             this.chkSort.TabIndex = 1;
             this.chkSort.Text = "I want to sort this table";
             this.chkSort.UseVisualStyleBackColor = true;
+            this.chkSort.CheckedChanged += new System.EventHandler(this.chkSort_CheckedChanged);
             // 
             // update
             // 

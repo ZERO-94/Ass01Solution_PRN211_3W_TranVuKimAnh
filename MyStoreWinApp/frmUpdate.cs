@@ -17,6 +17,7 @@ namespace MyStoreWinApp
         private MemberObject member;
         private frmLogin frmLogin;
         private MemberRepository memberRepository;
+        private string operationType = "update";
         public frmUpdate(MemberObject member, frmLogin frmLogin)
         {
             this.member = member;
@@ -46,6 +47,7 @@ namespace MyStoreWinApp
 
         private void update_Click(object sender, EventArgs e)
         {
+            operationType = "update";
             if(ValidateChildren(ValidationConstraints.Enabled))
             {
                 // update
@@ -70,15 +72,19 @@ namespace MyStoreWinApp
 
         private void tbName_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tbName.Text))
+            if (operationType.Equals("update"))
             {
-                e.Cancel = true;
-                tbName.Focus();
-                errorProvider1.SetError(tbName, "Name can't be blank");
-                
-            } else
-            {
-                e.Cancel = false;
+                if (string.IsNullOrWhiteSpace(tbName.Text))
+                {
+                    e.Cancel = true;
+                    tbName.Focus();
+                    errorProvider1.SetError(tbName, "Name can't be blank");
+
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
@@ -89,61 +95,73 @@ namespace MyStoreWinApp
 
         private void tbEmail_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbEmail.Text))
+            if (operationType.Equals("update"))
             {
-                e.Cancel = true;
-                tbEmail.Focus();
-                errorProvider1.SetError(tbEmail, "Email can't be blank");
+                if (string.IsNullOrWhiteSpace(tbEmail.Text))
+                {
+                    e.Cancel = true;
+                    tbEmail.Focus();
+                    errorProvider1.SetError(tbEmail, "Email can't be blank");
 
-            }
-            else
-            {
-                e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
         private void cbCity_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbCity.Text))
+            if (operationType.Equals("update"))
             {
-                e.Cancel = true;
-                cbCity.Focus();
-                errorProvider1.SetError(cbCity, "City can't be blank");
+                if (string.IsNullOrWhiteSpace(cbCity.Text))
+                {
+                    e.Cancel = true;
+                    cbCity.Focus();
+                    errorProvider1.SetError(cbCity, "City can't be blank");
 
-            }
-            else
-            {
-                e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
         private void cbCountry_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbCountry.Text))
+            if (operationType.Equals("update"))
             {
-                e.Cancel = true;
-                cbCountry.Focus();
-                errorProvider1.SetError(cbCountry, "Country can't be blank");
+                if (string.IsNullOrWhiteSpace(cbCountry.Text))
+                {
+                    e.Cancel = true;
+                    cbCountry.Focus();
+                    errorProvider1.SetError(cbCountry, "Country can't be blank");
 
-            }
-            else
-            {
-                e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
         private void cbRole_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbRole.Text))
+            if (operationType.Equals("update"))
             {
-                e.Cancel = true;
-                cbRole.Focus();
-                errorProvider1.SetError(cbRole, "Role can't be blank");
+                if (string.IsNullOrWhiteSpace(cbRole.Text))
+                {
+                    e.Cancel = true;
+                    cbRole.Focus();
+                    errorProvider1.SetError(cbRole, "Role can't be blank");
 
-            }
-            else
-            {
-                e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
@@ -152,6 +170,86 @@ namespace MyStoreWinApp
             member = null;
             frmLogin.Show();
             this.Hide();
+        }
+
+        private void tbOldPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if(operationType.Equals("changePassword"))
+            {
+                if (string.IsNullOrWhiteSpace(tbOldPassword.Text))
+                {
+                    e.Cancel = true;
+                    tbOldPassword.Focus();
+                    errorProvider1.SetError(tbOldPassword, "Old password can't be blank");
+
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
+            }
+        }
+
+        private void tbReConfirm_Validating(object sender, CancelEventArgs e)
+        {
+            if (operationType.Equals("changePassword"))
+            {
+                if (string.IsNullOrWhiteSpace(tbReConfirm.Text))
+                {
+                    e.Cancel = true;
+                    tbReConfirm.Focus();
+                    errorProvider1.SetError(tbReConfirm, "Re-confirm password can't be blank");
+
+                } else if (!tbOldPassword.Text.Equals(tbReConfirm.Text))
+                {
+                    e.Cancel = true;
+                    tbReConfirm.Focus();
+                    errorProvider1.SetError(tbReConfirm, "Re-confirm password must be the same as old password");
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
+            }
+        }
+
+        private void tbNewPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (operationType.Equals("changePassword"))
+            {
+                if (string.IsNullOrWhiteSpace(tbNewPassword.Text))
+                {
+                    e.Cancel = true;
+                    tbNewPassword.Focus();
+                    errorProvider1.SetError(tbNewPassword, "New password can't be blank");
+
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
+            }
+        }
+
+        private void changePassword_Click(object sender, EventArgs e)
+        {
+            operationType = "changePassword";
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                // change password
+
+                bool changePasswordRes = memberRepository.ChangePassword(member, member.MemberID, tbOldPassword.Text, tbNewPassword.Text);
+                if (changePasswordRes) MessageBox.Show("Change password successfully");
+                else MessageBox.Show("Failed to change password");
+
+                member = memberRepository.GetMemberById(member, member.MemberID);
+                loadFormData();
+
+                //rest form
+                tbOldPassword.ResetText();
+                tbReConfirm.ResetText();
+                tbNewPassword.ResetText();
+            }
         }
     }
 }

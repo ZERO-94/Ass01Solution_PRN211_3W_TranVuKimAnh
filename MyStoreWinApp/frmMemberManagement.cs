@@ -196,5 +196,47 @@ namespace MyStoreWinApp
                 });
             }
         }
+
+        private void chkSort_CheckedChanged(object sender, EventArgs e)
+        {
+            string searchCity = this.searchCity.Text;
+            string searchCountry = this.searchCountry.Text;
+            string searchId = this.searchId.Text;
+            string searchName = this.searchName.Text;
+            bool checkedValue = chkSort.Checked;
+
+            if (!string.IsNullOrWhiteSpace(searchId) || !string.IsNullOrWhiteSpace(searchName))
+            {
+                loadTableData(delegate (List<MemberObject> list)
+                {
+                    List<MemberObject> list1 = memberRepository.SearchMemberByIdAndName(admin, searchName, searchId);
+                    List<MemberObject> list2 = memberRepository.GetMemberByCityAndCountry(admin, searchCity, searchCountry);
+
+                    List<MemberObject> combineList = list1.Intersect(list2).ToList();
+
+                    if(checkedValue)
+                    {
+                        return combineList.OrderBy(s => s.MemberName).ToList();
+                    } else
+                    {
+                        return combineList;
+                    }
+                });
+            }
+            else
+            {
+                loadTableData(delegate (List<MemberObject> list)
+                {
+                    if (checkedValue)
+                    {
+                        return list.OrderBy(s => s.MemberName).ToList();
+                    }
+                    else
+                    {
+                        return list;
+                    }
+                });
+            }
+        }
     }
 }
