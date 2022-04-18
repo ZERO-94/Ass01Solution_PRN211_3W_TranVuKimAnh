@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ddebba0c-adff-4361-8f68-e52ca77198ae": {
+      "ProjectGuid": "ddebba0c-adff-4361-8f68-e52ca77198ae",
+      "DisplayName": "DataAccess",
+      "ColorIndex": 0
+    },
+    "4dacc4c3-22b6-4fd5-808e-d36e0ae84d2a": {
+      "ProjectGuid": "4dacc4c3-22b6-4fd5-808e-d36e0ae84d2a",
+      "DisplayName": "BusinessObject",
+      "ColorIndex": 1
+    },
+    "65168fa5-33f2-4f05-b09f-dd6579355982": {
+      "ProjectGuid": "65168fa5-33f2-4f05-b09f-dd6579355982",
+      "DisplayName": "MyStoreWinApp1",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "acc87a50-ce63-425e-9d38-b0c4bba07b73": {
+      "ProjectGuid": "acc87a50-ce63-425e-9d38-b0c4bba07b73",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 3
+    },
+    "58844b7b-8d06-472e-8512-c8487f11e9fb": {
+      "ProjectGuid": "58844b7b-8d06-472e-8512-c8487f11e9fb",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 4
+    },
+    "2afc4341-5807-4920-aaee-c1dbece9e27d": {
+      "ProjectGuid": "2afc4341-5807-4920-aaee-c1dbece9e27d",
+      "DisplayName": "WinFormsApp",
+      "ColorIndex": 5
+    },
+    "b5995584-6f23-4dd2-873d-86b9369fec2d": {
+      "ProjectGuid": "b5995584-6f23-4dd2-873d-86b9369fec2d",
+      "DisplayName": "MyStoreWinApp",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}
