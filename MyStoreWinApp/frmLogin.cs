@@ -52,6 +52,7 @@ namespace MyStoreWinApp
             } else
             {
                 e.Cancel = false;
+                errorProvider1.SetError(tbEmail, null);
             }
         }
 
@@ -66,6 +67,7 @@ namespace MyStoreWinApp
             else
             {
                 e.Cancel = false;
+                errorProvider1.SetError(tbPassword, null);
             }
         }
 
@@ -99,6 +101,11 @@ namespace MyStoreWinApp
             {
                 MessageBox.Show("Can't login, try again!");
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -84,6 +84,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(tbName, null);
                 }
             }
         }
@@ -107,6 +108,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(tbEmail, null);
                 }
             }
         }
@@ -125,6 +127,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(cbCity, null);
                 }
             }
         }
@@ -143,6 +146,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(cbCountry, null);
                 }
             }
         }
@@ -161,6 +165,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(cbRole, null);
                 }
             }
         }
@@ -186,6 +191,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(tbOldPassword, null);
                 }
             }
         }
@@ -209,6 +215,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(tbReConfirm, null);
                 }
             }
         }
@@ -227,6 +234,7 @@ namespace MyStoreWinApp
                 else
                 {
                     e.Cancel = false;
+                    errorProvider1.SetError(tbNewPassword, null);
                 }
             }
         }
