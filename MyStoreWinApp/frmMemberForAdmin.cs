@@ -29,13 +29,13 @@ namespace MyStoreWinApp
 
         public MemberObject GetMemberObject()
         {
+            MemberObject newMember = null;
             if(ValidateChildren(ValidationConstraints.Enabled))
             {
                 if(cbRole.Text.Equals("Admin"))
                 {
-                    return new Admin()
+                    newMember = new Admin()
                     {
-                        MemberID = tbId.Text,
                         MemberName = tbName.Text,
                         Email = tbEmail.Text,
                         City = cbCity.Text,
@@ -44,9 +44,8 @@ namespace MyStoreWinApp
                     };
                 } else
                 {
-                    return new MemberObject()
+                    newMember = new MemberObject()
                     {
-                        MemberID = tbId.Text,
                         MemberName = tbName.Text,
                         Email = tbEmail.Text,
                         City = cbCity.Text,
@@ -54,6 +53,18 @@ namespace MyStoreWinApp
                         Role = cbRole.Text
                     };
                 }
+
+                if(operationType.Equals("create"))
+                {
+                    newMember.MemberID = tbId.Text;
+                    newMember.Password = tbPassword.Text;
+                } else if(operationType.Equals("update"))
+                {
+                    newMember.MemberID = member.MemberID;
+                    newMember.Password = tbPassword.Text;
+                }
+
+                return newMember;
             }
 
             return null;
@@ -61,17 +72,22 @@ namespace MyStoreWinApp
 
         private void tbId_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tbId.Text))
+            if (operationType.Equals("create"))
             {
-                e.Cancel = true;
-                errorProvider1.SetError(tbId, "Id can't be blank!");
-            } else if (memberRepository.GetMemberById(new Admin(), tbId.Text) != null)
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(tbId, "Id can't be duplicated!");
-            } else
-            {
-                e.Cancel = false;
+                if (string.IsNullOrWhiteSpace(tbId.Text))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(tbId, "Id can't be blank!");
+                }
+                else if (memberRepository.GetMemberById(new Admin(), tbId.Text) != null)
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(tbId, "Id can't be duplicated!");
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
@@ -142,14 +158,17 @@ namespace MyStoreWinApp
 
         private void tbPassword_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbPassword.Text))
+            if (operationType.Equals("create"))
             {
-                e.Cancel = true;
-                errorProvider1.SetError(tbPassword, "Email can't be blank!");
-            }
-            else
-            {
-                e.Cancel = false;
+                if (string.IsNullOrWhiteSpace(tbPassword.Text))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(tbPassword, "Email can't be blank!");
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
@@ -157,11 +176,10 @@ namespace MyStoreWinApp
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                btnOk.DialogResult = DialogResult.OK;
+                this.DialogResult = DialogResult.OK;
             } else
             {
-                btnOk.DialogResult = DialogResult.None;
-                
+                this.DialogResult = DialogResult.None;
             }
         }
 
@@ -173,6 +191,34 @@ namespace MyStoreWinApp
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmMemberForAdmin_Load(object sender, EventArgs e)
+        {
+            
+
+            if(operationType.Equals("create"))
+            {
+                //show all
+                lbOperation.Text = "Create new member";
+            } else if(operationType.Equals("update"))
+            {
+                //hide id and password
+                lbOperation.Text = "Update member with ID: " + member.MemberID; 
+                tbId.Hide();
+                lbId.Hide();
+                tbPassword.Hide();
+                lbPassword.Hide();
+
+                //load data
+                tbId.Text = member.MemberID;
+                tbEmail.Text = member.Email;
+                tbName.Text = member.MemberName;
+                cbCity.Text = member.City;
+                cbCountry.Text = member.Country;
+                cbRole.Text = member.Role;
+                tbPassword.Text = member.Password;
+            }
         }
     }
 }

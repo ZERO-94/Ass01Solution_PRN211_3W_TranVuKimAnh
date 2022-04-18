@@ -248,6 +248,7 @@
             this.Name = "frmMemberForAdmin";
             this.Text = "frmMemberForAdmin";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMemberForAdmin_FormClosing);
+            this.Load += new System.EventHandler(this.frmMemberForAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -166,5 +166,35 @@ namespace MyStoreWinApp
                 });
             }
         }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string updateId = (string)memberDataGrid.Rows[memberDataGrid.CurrentCell.RowIndex].Cells[0].Value;
+
+                if (updateId != null) {
+                    MemberObject updateMember = memberRepository.GetMemberById(admin, updateId);
+                    frmMemberForAdmin frmMemberForAdmin = new frmMemberForAdmin("update", updateMember);
+
+                        if (frmMemberForAdmin.ShowDialog() == DialogResult.OK)
+                        {
+                            //create member
+                            MemberObject memberObject = frmMemberForAdmin.GetMemberObject();
+
+                            bool updateRes = memberRepository.UpdateMember(admin, updateId, memberObject);
+                            if (updateRes) MessageBox.Show("Update successfully");
+                            else MessageBox.Show("Failed to update");
+                        }
+                }
+            }
+            finally
+            {
+                loadTableData(delegate (List<MemberObject> list)
+                {
+                    return list;
+                });
+            }
+        }
     }
 }

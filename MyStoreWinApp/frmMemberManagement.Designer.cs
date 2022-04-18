@@ -75,6 +75,7 @@
             this.update.TabIndex = 2;
             this.update.Text = "update";
             this.update.UseVisualStyleBackColor = true;
+            this.update.Click += new System.EventHandler(this.update_Click);
             // 
             // delete
             // 
