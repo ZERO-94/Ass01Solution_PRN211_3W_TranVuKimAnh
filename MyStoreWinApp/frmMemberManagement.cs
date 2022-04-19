@@ -63,6 +63,9 @@ namespace MyStoreWinApp
 
         private void frmMemberManagement_Load(object sender, EventArgs e)
         {
+            //change welcome
+            username.Text = admin.MemberName;
+
             loadTableData(delegate (List<MemberObject> list)
             {
                 return list; //get all
