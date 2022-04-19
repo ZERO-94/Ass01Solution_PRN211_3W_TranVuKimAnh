@@ -77,7 +77,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(tbName.Text))
                 {
                     e.Cancel = true;
-                    tbName.Focus();
                     errorProvider1.SetError(tbName, "Name can't be blank");
 
                 }
@@ -101,7 +100,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(tbEmail.Text))
                 {
                     e.Cancel = true;
-                    tbEmail.Focus();
                     errorProvider1.SetError(tbEmail, "Email can't be blank");
 
                 }
@@ -120,7 +118,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(cbCity.Text))
                 {
                     e.Cancel = true;
-                    cbCity.Focus();
                     errorProvider1.SetError(cbCity, "City can't be blank");
 
                 }
@@ -139,7 +136,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(cbCountry.Text))
                 {
                     e.Cancel = true;
-                    cbCountry.Focus();
                     errorProvider1.SetError(cbCountry, "Country can't be blank");
 
                 }
@@ -158,7 +154,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(cbRole.Text))
                 {
                     e.Cancel = true;
-                    cbRole.Focus();
                     errorProvider1.SetError(cbRole, "Role can't be blank");
 
                 }
@@ -184,7 +179,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(tbOldPassword.Text))
                 {
                     e.Cancel = true;
-                    tbOldPassword.Focus();
                     errorProvider1.SetError(tbOldPassword, "Old password can't be blank");
 
                 }
@@ -203,13 +197,11 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(tbReConfirm.Text))
                 {
                     e.Cancel = true;
-                    tbReConfirm.Focus();
                     errorProvider1.SetError(tbReConfirm, "Re-confirm password can't be blank");
 
                 } else if (!tbOldPassword.Text.Equals(tbReConfirm.Text))
                 {
                     e.Cancel = true;
-                    tbReConfirm.Focus();
                     errorProvider1.SetError(tbReConfirm, "Re-confirm password must be the same as old password");
                 }
                 else
@@ -227,7 +219,6 @@ namespace MyStoreWinApp
                 if (string.IsNullOrWhiteSpace(tbNewPassword.Text))
                 {
                     e.Cancel = true;
-                    tbNewPassword.Focus();
                     errorProvider1.SetError(tbNewPassword, "New password can't be blank");
 
                 }

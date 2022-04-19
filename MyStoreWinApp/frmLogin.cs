@@ -47,7 +47,6 @@ namespace MyStoreWinApp
             if(string.IsNullOrEmpty(tbEmail.Text))
             {
                 e.Cancel = true;
-                tbEmail.Focus();
                 errorProvider1.SetError(tbEmail, "Email can't be blank!");
             } else
             {
@@ -61,7 +60,6 @@ namespace MyStoreWinApp
             if (string.IsNullOrEmpty(tbPassword.Text))
             {
                 e.Cancel = true;
-                tbPassword.Focus();
                 errorProvider1.SetError(tbPassword, "Password can't be blank!");
             }
             else
