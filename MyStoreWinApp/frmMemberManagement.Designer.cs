@@ -53,7 +53,6 @@
             // 
             this.memberDataGrid.AllowUserToAddRows = false;
             this.memberDataGrid.AllowUserToDeleteRows = false;
-            this.memberDataGrid.AllowUserToOrderColumns = true;
             this.memberDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.memberDataGrid.Location = new System.Drawing.Point(33, 188);
             this.memberDataGrid.MultiSelect = false;

@@ -36,32 +36,32 @@ namespace MyStoreWinApp
                 {
                     newMember = new Admin()
                     {
-                        MemberName = tbName.Text,
-                        Email = tbEmail.Text,
-                        City = cbCity.Text,
-                        Country = cbCountry.Text,
-                        Role = cbRole.Text
+                        MemberName = tbName.Text.Trim(),
+                        Email = tbEmail.Text.Trim(),
+                        City = cbCity.Text.Trim(),
+                        Country = cbCountry.Text.Trim(),
+                        Role = cbRole.Text.Trim()
                     };
                 } else
                 {
                     newMember = new MemberObject()
                     {
-                        MemberName = tbName.Text,
-                        Email = tbEmail.Text,
-                        City = cbCity.Text,
-                        Country = cbCountry.Text,
-                        Role = cbRole.Text
+                        MemberName = tbName.Text.Trim(),
+                        Email = tbEmail.Text.Trim(),
+                        City = cbCity.Text.Trim(),
+                        Country = cbCountry.Text.Trim(),
+                        Role = cbRole.Text.Trim()
                     };
                 }
 
                 if(operationType.Equals("create"))
                 {
-                    newMember.MemberID = tbId.Text;
-                    newMember.Password = tbPassword.Text;
+                    newMember.MemberID = tbId.Text.Trim();
+                    newMember.Password = tbPassword.Text.Trim();
                 } else if(operationType.Equals("update"))
                 {
                     newMember.MemberID = member.MemberID;
-                    newMember.Password = tbPassword.Text;
+                    newMember.Password = tbPassword.Text.Trim();
                 }
 
                 return newMember;
@@ -74,12 +74,12 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("create"))
             {
-                if (string.IsNullOrWhiteSpace(tbId.Text))
+                if (string.IsNullOrWhiteSpace(tbId.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbId, "Id can't be blank!");
                 }
-                else if (memberRepository.GetMemberById(new Admin(), tbId.Text) != null)
+                else if (memberRepository.GetMemberById(new Admin(), tbId.Text.Trim()) != null)
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbId, "Id can't be duplicated!");
@@ -94,7 +94,7 @@ namespace MyStoreWinApp
 
         private void tbName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbName.Text))
+            if (string.IsNullOrWhiteSpace(tbName.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(tbName, "Name can't be blank!");
@@ -108,7 +108,7 @@ namespace MyStoreWinApp
 
         private void tbEmail_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbEmail.Text))
+            if (string.IsNullOrWhiteSpace(tbEmail.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(tbEmail, "Email can't be blank!");
@@ -122,7 +122,7 @@ namespace MyStoreWinApp
 
         private void cbCity_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbCity.Text))
+            if (string.IsNullOrWhiteSpace(cbCity.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cbCity, "City can't be blank!");
@@ -136,7 +136,7 @@ namespace MyStoreWinApp
 
         private void cbCountry_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbCountry.Text))
+            if (string.IsNullOrWhiteSpace(cbCountry.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cbCountry, "Country can't be blank!");
@@ -150,7 +150,7 @@ namespace MyStoreWinApp
 
         private void cbRole_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbRole.Text))
+            if (string.IsNullOrWhiteSpace(cbRole.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(cbRole, "Country can't be blank!");
@@ -166,7 +166,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("create"))
             {
-                if (string.IsNullOrWhiteSpace(tbPassword.Text))
+                if (string.IsNullOrWhiteSpace(tbPassword.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbPassword, "Email can't be blank!");

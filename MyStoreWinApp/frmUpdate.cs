@@ -54,11 +54,11 @@ namespace MyStoreWinApp
                 MemberObject newMemberInfo = new MemberObject()
                 {
                     MemberID = member.MemberID,
-                    MemberName = tbName.Text,
-                    Email = tbEmail.Text,
-                    City = cbCity.Text,
-                    Country = cbCountry.Text,
-                    Role = cbRole.Text
+                    MemberName = tbName.Text.Trim(),
+                    Email = tbEmail.Text.Trim(),
+                    City = cbCity.Text.Trim(),
+                    Country = cbCountry.Text.Trim(),
+                    Role = cbRole.Text.Trim()
                 };
 
                 bool updateRes = memberRepository.UpdateMember(member, member.MemberID, newMemberInfo);
@@ -74,7 +74,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("update"))
             {
-                if (string.IsNullOrWhiteSpace(tbName.Text))
+                if (string.IsNullOrWhiteSpace(tbName.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbName, "Name can't be blank");
@@ -97,7 +97,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("update"))
             {
-                if (string.IsNullOrWhiteSpace(tbEmail.Text))
+                if (string.IsNullOrWhiteSpace(tbEmail.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbEmail, "Email can't be blank");
@@ -115,7 +115,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("update"))
             {
-                if (string.IsNullOrWhiteSpace(cbCity.Text))
+                if (string.IsNullOrWhiteSpace(cbCity.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(cbCity, "City can't be blank");
@@ -133,7 +133,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("update"))
             {
-                if (string.IsNullOrWhiteSpace(cbCountry.Text))
+                if (string.IsNullOrWhiteSpace(cbCountry.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(cbCountry, "Country can't be blank");
@@ -151,7 +151,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("update"))
             {
-                if (string.IsNullOrWhiteSpace(cbRole.Text))
+                if (string.IsNullOrWhiteSpace(cbRole.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(cbRole, "Role can't be blank");
@@ -176,7 +176,7 @@ namespace MyStoreWinApp
         {
             if(operationType.Equals("changePassword"))
             {
-                if (string.IsNullOrWhiteSpace(tbOldPassword.Text))
+                if (string.IsNullOrWhiteSpace(tbOldPassword.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbOldPassword, "Old password can't be blank");
@@ -194,12 +194,12 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("changePassword"))
             {
-                if (string.IsNullOrWhiteSpace(tbReConfirm.Text))
+                if (string.IsNullOrWhiteSpace(tbReConfirm.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbReConfirm, "Re-confirm password can't be blank");
 
-                } else if (!tbOldPassword.Text.Equals(tbReConfirm.Text))
+                } else if (!tbOldPassword.Text.Equals(tbReConfirm.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbReConfirm, "Re-confirm password must be the same as old password");
@@ -216,7 +216,7 @@ namespace MyStoreWinApp
         {
             if (operationType.Equals("changePassword"))
             {
-                if (string.IsNullOrWhiteSpace(tbNewPassword.Text))
+                if (string.IsNullOrWhiteSpace(tbNewPassword.Text.Trim()))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(tbNewPassword, "New password can't be blank");
@@ -239,7 +239,7 @@ namespace MyStoreWinApp
 
                 bool changePasswordRes = memberRepository.ChangePassword(member, member.MemberID, tbOldPassword.Text, tbNewPassword.Text);
                 if (changePasswordRes) MessageBox.Show("Change password successfully");
-                else MessageBox.Show("Failed to change password");
+                else MessageBox.Show("Invalid old password!");
 
                 member = memberRepository.GetMemberById(member, member.MemberID);
                 loadFormData();

@@ -42,7 +42,14 @@ namespace MyStoreWinApp
             List<MemberObject> members = memberRepository.GetAllMembers(admin);
 
             //filter in here
-            List<MemberObject> membersAfterFilter = filter(members);
+            List<MemberObject> membersAfterFilter = null;
+            if (chkSort.Checked)
+            {
+                membersAfterFilter = filter(members).OrderBy((m) => m.MemberName).ToList();
+            } else
+            {
+                membersAfterFilter = filter(members);
+            }
 
             foreach(MemberObject member in membersAfterFilter)
             {
@@ -116,6 +123,12 @@ namespace MyStoreWinApp
         {
             try
             {
+                if (memberDataGrid.CurrentCell == null)
+                {
+                    MessageBox.Show("Please choose an account!");
+                    return;
+                }
+
                 string deleteId = (string)memberDataGrid.Rows[memberDataGrid.CurrentCell.RowIndex].Cells[0].Value;
 
                 if (deleteId != null)
@@ -174,6 +187,12 @@ namespace MyStoreWinApp
         {
             try
             {
+                if(memberDataGrid.CurrentCell == null)
+                {
+                    MessageBox.Show("Please choose an account!");
+                    return;
+                }
+
                 string updateId = (string)memberDataGrid.Rows[memberDataGrid.CurrentCell.RowIndex].Cells[0].Value;
 
                 if (updateId != null) {
@@ -208,7 +227,7 @@ namespace MyStoreWinApp
             string searchName = this.searchName.Text;
             bool checkedValue = chkSort.Checked;
 
-            if (!string.IsNullOrWhiteSpace(searchId) || !string.IsNullOrWhiteSpace(searchName))
+            if (!string.IsNullOrWhiteSpace(searchId) || !string.IsNullOrWhiteSpace(searchName) || !string.IsNullOrWhiteSpace(searchCity) || !string.IsNullOrWhiteSpace(searchCountry))
             {
                 loadTableData(delegate (List<MemberObject> list)
                 {
@@ -217,27 +236,14 @@ namespace MyStoreWinApp
 
                     List<MemberObject> combineList = list1.Intersect(list2).ToList();
 
-                    if(checkedValue)
-                    {
-                        return combineList.OrderBy(s => s.MemberName).ToList();
-                    } else
-                    {
-                        return combineList;
-                    }
+                    return combineList;
                 });
             }
             else
             {
                 loadTableData(delegate (List<MemberObject> list)
                 {
-                    if (checkedValue)
-                    {
-                        return list.OrderBy(s => s.MemberName).ToList();
-                    }
-                    else
-                    {
-                        return list;
-                    }
+                    return list;
                 });
             }
         }
